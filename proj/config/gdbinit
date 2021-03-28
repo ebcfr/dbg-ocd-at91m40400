@@ -1,0 +1,12 @@
+layout src
+tabset 4
+fs cmd
+target remote localhost:3333
+monitor soft_reset_halt
+monitor mww 0xffe00000 0x01002535
+monitor mww 0xffe00004 0x02002121
+monitor mww 0xffe00024 0x00000006
+monitor mww 0xffe00020 1
+load
+tb main
+c

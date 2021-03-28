@@ -1,0 +1,17 @@
+#! arm-none-eabi-gdb
+target extended-remote localhost:3333
+monitor soft_reset_halt
+# set external flash @0x01000000
+monitor mww 0xffe00000 0x01002535
+# set external SRAM @0x02000000
+monitor mww 0xffe00004 0x02002121
+# set MCR register
+monitor mww 0xffe00024 0x00000006
+# disable all interrupts
+mww 0xFFFFF124 0xFFFFFFFF
+# change the mapping!
+monitor mww 0xffe00020 1
+# upload the code/data to the taget
+load
+tb main
+continue
