@@ -11,7 +11,7 @@
 
 The project uses a legacy AT91EB01 board with a AT91M40400 microcontroller (arm7tdmi microprocessor @ 32.768 MHz) and 512kb SRAM and 128kb Flash. It requires a JLINK compatible JTAG probe.
 
-<p align="center"><img src="docs/eb01.jpg">"    "<img src="docs/sam-ice.png"></p>
+<p align="center"><img src="docs/eb01.jpg"><img src="docs/sam-ice.png"></p>
 
 The project allows you to upload the program in SRAM, not Flash. Openocd doesn't have the driver for the Flash. So you have to use an external tool to download to flash (might have been done by ATMEL, but doesn't worth the effort for now). Some notes about memory configuration and system boot.
 
@@ -105,10 +105,8 @@ and to remap Flash memory according to the EBI_CSR0 register.
  +- config/            linker script, openocd script
  +- docs/              some doc
  +- include/
- |   +- cmsis/         ARM CMSIS core
  |   +- board.h        global peripheral pointers
- |   +- config.h       global project IO pin configuration
- |   +- stm32f411xe.h  peripheral register structure definition
+ |   +- AT91M40400.h  peripheral register structure definition
  +- lib/               microcontroller peripheral drivers
  +- src/               Application src
  +- startup/           Startup code ()
